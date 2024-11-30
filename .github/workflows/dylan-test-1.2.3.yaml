@@ -5,6 +5,10 @@ jobs:
   dump_contexts_to_log:
     runs-on: ubuntu-latest
     steps:
+      - name: echo filtered workflow_ref
+        env:
+          WORKFLOW_REF: ${{ github.workflow_ref }}
+        run: echo "${WORKFLOW_REF/dylanbeattie/donkeysausage/}"
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
